@@ -208,8 +208,8 @@ GameObject:
   - component: {fileID: 1751870239355249724}
   - component: {fileID: 1751870239355249725}
   - component: {fileID: 1751870239355249722}
-  - component: {fileID: 1751870239355249723}
-  - component: {fileID: 1751870239355249726}
+  - component: {fileID: 6663182740661688063}
+  - component: {fileID: 3152319732984180186}
   m_Layer: 5
   m_Name: QTE Canvas
   m_TagString: Untagged
@@ -256,7 +256,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 778425877
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1751870239355249725
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1751870239355249722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,20 +299,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1751870239355249723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751870239355249720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f55b141a12de4729bfd693f618b826c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  QTEPanel: {fileID: 1751870239091565327}
---- !u!114 &1751870239355249726
+--- !u!114 &6663182740661688063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,11 +312,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components:
-  - {fileID: 1751870239355249723}
+  - {fileID: 3152319732984180186}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
   _bindType: 0
+--- !u!114 &3152319732984180186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751870239355249720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55b141a12de4729bfd693f618b826c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QTEPanel: {fileID: 1751870239091565327}
 --- !u!1 &1751870239417178295
 GameObject:
   m_ObjectHideFlags: 0
