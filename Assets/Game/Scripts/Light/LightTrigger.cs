@@ -1,4 +1,4 @@
-using DDDCore.Implement;
+using DDDCore.Event;
 using Game.Scripts.Helpers;
 using Game.Scripts.Light.Events;
 using UnityEngine;
@@ -11,7 +11,10 @@ namespace Game.Scripts.Light
     #region Private Variables
 
         [Inject]
-        private DomainEventBus domainEventBus;
+        private IDomainEventBus domainEventBus;
+
+        [SerializeField]
+        private string lightDataId;
 
     #endregion
 
@@ -20,9 +23,13 @@ namespace Game.Scripts.Light
         private void OnTriggerEnter2D(Collider2D collider2D)
         {
             // check if collider is player
-            if (PlayerHelper.IsPlayer(collider2D.gameObject))
+            var triggerGameObject = collider2D.gameObject;
+            if (PlayerHelper.IsPlayer(triggerGameObject))
+            {
+                var playerDataId = PlayerHelper.GetPlayerDataId(triggerGameObject);
                 // publish event
-                domainEventBus.Post(new LightInteractionTriggered());
+                domainEventBus.Post(new LightInteractionTriggered(playerDataId , lightDataId));
+            }
         }
 
     #endregion

@@ -6,6 +6,11 @@ namespace Game.Scripts.Helpers
     {
     #region Public Methods
 
+        public static string GetPlayerDataId(GameObject triggerGameObject)
+        {
+            return "0";
+        }
+
         /// <summary>
         ///     check if gameObject is player
         /// </summary>
