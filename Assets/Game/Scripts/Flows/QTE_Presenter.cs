@@ -1,27 +1,19 @@
 using UnityEngine;
-using Zenject;
 
 namespace Game.Scripts.Flows
 {
     public class QTE_Presenter
     {
-    #region Private Variables
-
-        [Inject]
-        private Refenerce refenerce;
-
-    #endregion
-
     #region Public Methods
 
         public void HideQTE()
         {
-            refenerce.QTEPanel.Hide();
+            // refenerce.QTEPanel.Hide();
         }
 
         public void ShowQTE(string playerDataId , KeyCode keyCode)
         {
-            refenerce.QTEPanel.Show(keyCode);
+            // refenerce.QTEPanel.Show(keyCode);
         }
 
     #endregion

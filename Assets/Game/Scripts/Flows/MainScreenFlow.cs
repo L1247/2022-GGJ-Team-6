@@ -1,12 +1,21 @@
+using System;
+using Game.Scripts.Player;
 using Game.Scripts.QTE;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Game.Scripts.Flows
 {
-    public class MainScreenFlow
+    public class MainScreenFlow : IInitializable
     {
     #region Private Variables
+
+        [Inject]
+        private PlayerRegistry playerRegistry;
+
+        [Inject]
+        private PlayerSpawner playerSpawner;
 
         [Inject]
         private QTE_Presenter qtePresenter;
@@ -17,13 +26,28 @@ namespace Game.Scripts.Flows
         [Inject]
         private QTESpawner qteSpawner;
 
+        [Inject]
+        private Setting setting;
+
     #endregion
 
     #region Public Methods
 
+        public void Initialize()
+        {
+            playerSpawner.Spawn("Demon");
+            playerSpawner.Spawn("Angel");
+        }
+
         public void WhenLightInteractionTriggered(string playerDataId , string lightDataId)
         {
             qteSpawner.Spawn(playerDataId , lightDataId);
+        }
+
+        public void WhenPlayerSpawned(string playerDataId)
+        {
+            var playerInstance = Object.Instantiate(setting.PlayerPrefab);
+            playerRegistry.Register(playerDataId , playerInstance);
         }
 
         public void WhenQTESpawned(string playerDataId , string qteDataId)
@@ -39,6 +63,20 @@ namespace Game.Scripts.Flows
         public void WhenQTESucceed()
         {
             qtePresenter.HideQTE();
+        }
+
+    #endregion
+
+    #region Nested Types
+
+        [Serializable]
+        public class Setting
+        {
+        #region Public Variables
+
+            public GameObject PlayerPrefab;
+
+        #endregion
         }
 
     #endregion

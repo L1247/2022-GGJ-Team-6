@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7786880156121238369}
   - component: {fileID: 7786880156121238378}
   m_Layer: 0
-  m_Name: Player_Angel
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableMovement: 1
   speed: 0.02
-  playerName: Angel
+  playerName: 
 --- !u!1001 &8263563985703053775
 PrefabInstance:
   m_ObjectHideFlags: 0
