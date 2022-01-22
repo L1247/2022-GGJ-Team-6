@@ -19,7 +19,7 @@ namespace Game.Scripts.Flows
             refenerce.QTEPanel.Hide();
         }
 
-        public void ShowQTE(KeyCode keyCode)
+        public void ShowQTE(string playerDataId , KeyCode keyCode)
         {
             refenerce.QTEPanel.Show(keyCode);
         }

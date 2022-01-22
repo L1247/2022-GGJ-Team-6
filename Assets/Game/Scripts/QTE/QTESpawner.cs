@@ -18,7 +18,7 @@ namespace Game.Scripts.QTE
         public void Spawn(string playerDataId , string lightDataId)
         {
             var qteDataId = "0";
-            domainEventBus.Post(new QTESpawned(qteDataId));
+            domainEventBus.Post(new QTESpawned(playerDataId , qteDataId));
         }
 
     #endregion
