@@ -1,28 +1,32 @@
-using DDDCore.Event;
-using DDDCore.Implement;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        public string playerName = "Angel";
-        public float speed = 0.3f;
-        public bool enableMovement = true;
+    #region Public Variables
 
-        private void Start()
+        public bool   enableMovement = true;
+        public float  speed          = 0.3f;
+        public string playerName     = "Angel";
+
+    #endregion
+
+    #region Public Methods
+
+        public void SetMovementDisable()
         {
-           
+            enableMovement = false;
         }
 
-        private void Update()
+        public void SetMovementEnable()
         {
-            if (enableMovement)
-                transform.Translate(MoveDirection() * speed);
+            enableMovement = true;
         }
+
+    #endregion
+
+    #region Private Methods
 
         private Vector2 MoveDirection()
         {
@@ -43,17 +47,16 @@ namespace Game.Scripts.Player
                 directionY += Input.GetKey(KeyCode.UpArrow) ? 1 : 0;
                 directionY += Input.GetKey(KeyCode.DownArrow) ? -1 : 0;
             }
-            return new Vector2(directionX, directionY);
+
+            return new Vector2(directionX , directionY);
         }
 
-        public void SetMovementDisable() 
+        private void Update()
         {
-            enableMovement = false;
+            if (enableMovement)
+                transform.Translate(MoveDirection() * speed);
         }
-        public void SetMovementEnable()
-        {
-            enableMovement = true;
-        }
+
+    #endregion
     }
-
 }
