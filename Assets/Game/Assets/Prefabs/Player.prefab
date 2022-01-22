@@ -150,6 +150,7 @@ MonoBehaviour:
   enableMovement: 1
   speed: 0.02
   playerName: 
+  spriteRenderer: {fileID: 7786880156121238372}
 --- !u!1001 &8263563985703053775
 PrefabInstance:
   m_ObjectHideFlags: 0

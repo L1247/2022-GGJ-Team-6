@@ -1,3 +1,4 @@
+using Game.Scripts.DataStructer;
 using Game.Scripts.Flows;
 using UnityEngine;
 using Zenject;
@@ -10,6 +11,9 @@ namespace Game.Scripts.Installers
     #region Private Variables
 
         [SerializeField]
+        private ActorDataOverview actorDataOverview;
+
+        [SerializeField]
         private MainScreenFlow.Setting mainScreenFlow;
 
     #endregion
@@ -19,6 +23,7 @@ namespace Game.Scripts.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(mainScreenFlow);
+            Container.BindInstance(actorDataOverview);
         }
 
     #endregion

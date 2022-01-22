@@ -20,6 +20,7 @@ namespace Game.Scripts.Installers
             Container.BindInterfacesAndSelfTo<QteDetector>().AsSingle();
             Container.Bind<QTE_Presenter>().AsSingle();
             Container.Bind<PlayerSpawner>().AsSingle();
+            Container.Bind<PlayerPresenter>().AsSingle();
             Container.Bind<PlayerRegistry>().AsSingle();
         }
 

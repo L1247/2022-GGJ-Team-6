@@ -12,6 +12,9 @@ namespace Game.Scripts.Flows
     #region Private Variables
 
         [Inject]
+        private PlayerPresenter playerPresenter;
+
+        [Inject]
         private PlayerRegistry playerRegistry;
 
         [Inject]
@@ -47,6 +50,7 @@ namespace Game.Scripts.Flows
         public void WhenPlayerSpawned(string playerDataId)
         {
             var playerInstance = Object.Instantiate(setting.PlayerPrefab);
+            playerPresenter.ShowPlayer(playerDataId , playerInstance);
             playerRegistry.Register(playerDataId , playerInstance);
         }
 

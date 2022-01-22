@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScreenFlow:
     PlayerPrefab: {fileID: 7786880156121238368, guid: d5701401ee9267e4080ea12cef82cb3f, type: 3}
+  actorDataOverview: {fileID: 11400000, guid: 73ecb6d82dc1450478c92cc95335861c, type: 2}
