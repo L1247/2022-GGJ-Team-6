@@ -26,14 +26,13 @@ namespace Game.Scripts.Flows
             qteSpawner.Spawn(playerDataId , lightDataId);
         }
 
-        public void WhenQTESpawned(string spawnedQteDataId)
+        public void WhenQTESpawned(string playerDataId , string qteDataId)
         {
-            Debug.Log($"{spawnedQteDataId}");
-            if (spawnedQteDataId.Equals("0"))
+            if (qteDataId.Equals("0"))
             {
                 var qteKeyCode = KeyCode.E;
-                qtePresenter.ShowQTE(qteKeyCode);
-                qteDetector.Register(qteKeyCode);
+                qtePresenter.ShowQTE(playerDataId , qteKeyCode);
+                qteDetector.Register(playerDataId , qteKeyCode);
             }
         }
 

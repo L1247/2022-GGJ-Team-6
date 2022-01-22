@@ -7,14 +7,16 @@ namespace Game.Scripts.QTE.Events
     #region Public Variables
 
         public string QteDataId;
+        public string PlayerDataId { get; }
 
     #endregion
 
     #region Constructor
 
-        public QTESpawned(string qteDataId)
+        public QTESpawned(string playerDataId , string qteDataId)
         {
-            QteDataId = qteDataId;
+            PlayerDataId = playerDataId;
+            QteDataId    = qteDataId;
         }
 
     #endregion

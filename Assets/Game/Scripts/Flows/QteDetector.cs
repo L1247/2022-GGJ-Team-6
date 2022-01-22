@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DDDCore.Event;
 using Game.Scripts.QTE.Events;
 using UnityEngine;
@@ -10,30 +11,34 @@ namespace Game.Scripts.Flows
     {
     #region Private Variables
 
+        /// <summary>
+        ///     player's data id , keyCode
+        /// </summary>
+        private readonly Dictionary<string , KeyCode> keycodes = new();
+
         [Inject]
         private IDomainEventBus domainEventBus;
-
-        private readonly List<KeyCode> keycodes = new();
 
     #endregion
 
     #region Public Methods
 
-        public void Register(KeyCode qteKeyCode)
+        public void Register(string playerDataId , KeyCode qteKeyCode)
         {
-            keycodes.Add(qteKeyCode);
+            keycodes.Add(playerDataId , qteKeyCode);
         }
 
         public void Tick()
         {
-            for (var index = keycodes.Count - 1 ; index >= 0 ; index--)
+            for (var index = keycodes.Keys.ToList().Count - 1 ; index >= 0 ; index--)
             {
-                var keyCode = keycodes[index];
-                var keyDown = Input.GetKeyDown(keyCode);
+                var playerDataId = keycodes.Keys.ToList()[index];
+                var keyCode      = keycodes[playerDataId];
+                var keyDown      = Input.GetKeyDown(keyCode);
                 if (keyDown)
                 {
                     domainEventBus.Post(new QTESucceed());
-                    UnRegister(keyCode);
+                    UnRegister(playerDataId);
                 }
             }
         }
@@ -42,9 +47,9 @@ namespace Game.Scripts.Flows
 
     #region Private Methods
 
-        private void UnRegister(KeyCode qteKeyCode)
+        private void UnRegister(string playerDataId)
         {
-            keycodes.Remove(qteKeyCode);
+            keycodes.Remove(playerDataId);
         }
 
     #endregion
