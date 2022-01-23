@@ -15,9 +15,9 @@ namespace Game.Scripts.Lamp
 
     #region Public Methods
 
-        public void AddLampCount(string playerDataId , int amount)
+        public void AddLampCount(string playerDataId)
         {
-            lampCounts.Add(playerDataId , amount);
+            lampCounts.Add(playerDataId , 1);
         }
 
         public int GetLampCount(string dataId)

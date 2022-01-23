@@ -89,7 +89,8 @@ namespace Game.Scripts.Flows
             var playerController = playerInstance.GetComponent<PlayerController>();
             playerRegistry.Register(playerDataId , playerController);
             playerPresenter.ShowPlayer(playerDataId);
-            lampRegistry.AddLampCount(playerDataId , 2);
+            lampRegistry.AddLampCount(playerDataId);
+            lampRegistry.AddLampCount(playerDataId);
         }
 
         /// <summary>
@@ -110,6 +111,7 @@ namespace Game.Scripts.Flows
         public void WhenQTESucceed(string succeedPlayerDataId)
         {
             qtePresenter.HideQte(succeedPlayerDataId);
+            lampRegistry.AddLampCount(succeedPlayerDataId);
         }
 
     #endregion
