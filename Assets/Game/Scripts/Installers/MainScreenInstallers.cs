@@ -1,4 +1,5 @@
 using DDDCore.Implement;
+using Game.Scripts.Calculator;
 using Game.Scripts.EventHandlers;
 using Game.Scripts.Flows;
 using Game.Scripts.Player;
@@ -22,6 +23,9 @@ namespace Game.Scripts.Installers
             Container.Bind<PlayerSpawner>().AsSingle();
             Container.Bind<PlayerPresenter>().AsSingle();
             Container.Bind<PlayerRegistry>().AsSingle();
+            // calculator
+            Container.Bind<HealthCalculator>().AsSingle();
+            Container.Bind<LampCalculator>().AsSingle();
         }
 
     #endregion
