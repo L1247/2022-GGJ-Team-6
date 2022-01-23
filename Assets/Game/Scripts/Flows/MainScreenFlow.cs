@@ -1,4 +1,5 @@
 using System;
+using AutoBot.Scripts.Utilities.Extensions;
 using Game.Scripts.Calculator;
 using Game.Scripts.Lamp;
 using Game.Scripts.Player;
@@ -62,6 +63,8 @@ namespace Game.Scripts.Flows
         {
             playerSpawner.Spawn("Demon");
             playerSpawner.Spawn("Angel");
+            var allLampInstances = lampInstanceRegistry.GetAllInstances();
+            allLampInstances.Shuffle();
         }
 
         public void Tick()
@@ -93,9 +96,18 @@ namespace Game.Scripts.Flows
             playerRegistry.Register(playerDataId , playerController);
             playerPresenter.ShowPlayer(playerDataId);
 
-            var allInstances = lampInstanceRegistry.GetAllInstances();
-            lampRegistry.AddLampCount(playerDataId);
-            lampRegistry.AddLampCount(playerDataId);
+            var lamp1 = lampInstanceRegistry.GetAllInstances();
+            // allLampInstances[0];
+            // lamp1.SetOwner(playerDataId);
+            // if (playerDataId.Equals("Angel")) { }
+            // else { }
+
+            // var lamp2 = allLampInstances[1];
+            // var lamp4 = allLampInstances[2];
+            // var lamp4 = allLampInstances[3];
+
+            // lampRegistry.AddLampCount(playerDataId , lamp);
+            // lampRegistry.AddLampCount(playerDataId);
         }
 
         /// <summary>

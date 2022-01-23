@@ -8,10 +8,18 @@ namespace Game.Scripts.Lamp
 {
     public class Lamp : MonoBehaviour
     {
+    #region Public Variables
+
+        public string DataId => lightDataId;
+
+    #endregion
+
     #region Private Variables
 
         [Inject]
         private IDomainEventBus domainEventBus;
+
+        private string ownerPlayerDataId;
 
         [SerializeField]
         private SpriteRenderer spriteRenderer;
@@ -38,6 +46,11 @@ namespace Game.Scripts.Lamp
     #endregion
 
     #region Public Methods
+
+        public void SetOwner(string playerDataId)
+        {
+            ownerPlayerDataId = playerDataId;
+        }
 
         public void SetSprite(Sprite sprite)
         {
