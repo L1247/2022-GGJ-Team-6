@@ -55,6 +55,11 @@ namespace Game.Scripts.Flows
             playerPresenter.ShowPlayer(playerDataId);
         }
 
+        /// <summary>
+        ///     show the qte Panel on the player's top
+        /// </summary>
+        /// <param name="playerDataId"></param>
+        /// <param name="qteDataId"></param>
         public void WhenQTESpawned(string playerDataId , string qteDataId)
         {
             if (qteDataId.Equals("0"))

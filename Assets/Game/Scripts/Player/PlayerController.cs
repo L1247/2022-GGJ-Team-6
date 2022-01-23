@@ -55,6 +55,7 @@ namespace Game.Scripts.Player
             downKeyCode           = keyBinding.Down;
             leftKeyCode           = keyBinding.Left;
             rightKeyCode          = keyBinding.Right;
+            gameObject.name       = $"Player_{actorData.DataId}";
         }
 
         public void SetMovement(bool value)

@@ -23,7 +23,8 @@ namespace Game.Scripts.Flows
         public void ShowQte(string playerDataId , KeyCode keyCode)
         {
             var playerController = playerRegistry.GetPlayerController(playerDataId);
-            var qtePanel         = playerController.GetQtePanel();
+            playerController.SetMovement(false);
+            var qtePanel = playerController.GetQtePanel();
             qtePanel.Show(keyCode);
         }
 
