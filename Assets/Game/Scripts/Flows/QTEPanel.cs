@@ -25,7 +25,8 @@ namespace Game.Scripts.Flows
 
         public void Show(KeyCode keyCode)
         {
-            qteText.text = keyCode.ToString();
+            var keyCodeText = keyCode == KeyCode.E ? "E" : "1";
+            qteText.text = keyCodeText;
             qteImage.gameObject.SetActive(true);
         }
 

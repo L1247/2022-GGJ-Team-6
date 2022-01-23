@@ -78,9 +78,10 @@ namespace Game.Scripts.Flows
             HurtAllPlayer();
         }
 
-        public void WhenLightInteractionTriggered(string playerDataId , string lightDataId)
+        public void WhenLightInteractionTriggered(string playerDataId)
         {
-            qteSpawner.Spawn(playerDataId , lightDataId);
+            var qteDataId = playerDataId.Equals("Angel") ? "0" : "1";
+            qteSpawner.Spawn(playerDataId , qteDataId);
         }
 
         public void WhenPlayerDead(string playerDataId)
@@ -131,12 +132,10 @@ namespace Game.Scripts.Flows
         /// <param name="qteDataId"></param>
         public void WhenQTESpawned(string playerDataId , string qteDataId)
         {
-            if (qteDataId.Equals("0"))
-            {
-                var qteKeyCode = KeyCode.E;
-                qtePresenter.ShowQte(playerDataId , qteKeyCode);
-                qteDetector.Register(playerDataId , qteKeyCode);
-            }
+            var isE        = qteDataId.Equals("0");
+            var qteKeyCode = isE ? KeyCode.E : KeyCode.Keypad1;
+            qtePresenter.ShowQte(playerDataId , qteKeyCode);
+            qteDetector.Register(playerDataId , qteKeyCode);
         }
 
         public void WhenQTESucceed(string succeedPlayerDataId)

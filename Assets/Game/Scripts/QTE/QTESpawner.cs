@@ -15,9 +15,8 @@ namespace Game.Scripts.QTE
 
     #region Public Methods
 
-        public void Spawn(string playerDataId , string lightDataId)
+        public void Spawn(string playerDataId , string qteDataId)
         {
-            var qteDataId = "0";
             domainEventBus.Post(new QTESpawned(playerDataId , qteDataId));
         }
 
