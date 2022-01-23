@@ -11,20 +11,23 @@ namespace Game.Scripts.Lamp
     #region Public Variables
 
         public string DataId => lightDataId;
-        public string Owner;
+
+        public AudioClip clipOnClose;
+
+        public AudioClip clipOnOpen;
+        public string    Owner;
 
     #endregion
 
     #region Private Variables
+
+        private AudioSource audioSource;
 
         [Inject]
         private IDomainEventBus domainEventBus;
 
         [SerializeField]
         private GameObject lightGameObject;
-
-        [SerializeField]
-        private SpriteRenderer spriteRenderer;
 
         [SerializeField]
         private string lightDataId;
@@ -54,6 +57,21 @@ namespace Game.Scripts.Lamp
             Owner = playerDataId;
             var lightVisible = Owner.Equals("Angel");
             lightGameObject.SetActive(lightVisible);
+            if (Time.timeSinceLevelLoad > 1)
+            {
+                var clip = lightVisible ? clipOnOpen : clipOnOpen;
+                audioSource.PlayOneShot(clip);
+            }
+        }
+
+    #endregion
+
+    #region Private Methods
+
+        private void Awake()
+        {
+            var camera = Camera.main;
+            audioSource = camera.GetComponent<AudioSource>();
         }
 
     #endregion
