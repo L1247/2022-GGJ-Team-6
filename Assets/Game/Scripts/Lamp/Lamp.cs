@@ -22,6 +22,9 @@ namespace Game.Scripts.Lamp
         private string ownerPlayerDataId;
 
         [SerializeField]
+        private GameObject lightGameObject;
+
+        [SerializeField]
         private SpriteRenderer spriteRenderer;
 
         [SerializeField]
@@ -50,15 +53,9 @@ namespace Game.Scripts.Lamp
         public void SetOwner(string playerDataId)
         {
             ownerPlayerDataId = playerDataId;
-            if (ownerPlayerDataId.Equals("Angel"))
-            {
-                // open light
-            }
-            else
-            {
-                // close light
-                gameObject.SetActive(false);
-            }
+            var lightVisible = ownerPlayerDataId.Equals("Angel");
+            Debug.Log($"{playerDataId} {lightVisible} , {gameObject.name}");
+            lightGameObject.SetActive(lightVisible);
         }
 
         public void SetSprite(Sprite sprite)
