@@ -30,10 +30,10 @@ namespace Game.Scripts.UI
 
     #region Public Methods
 
-        public void GameOver(string playerDataId)
+        public void GameOver(string deadPlayerDataId)
         {
-            var isAngel      = playerDataId.Equals("Angel");
-            var endingSprite = isAngel ? setting.angelWin : setting.demonWin;
+            var isDemonWin   = deadPlayerDataId.Equals("Angel");
+            var endingSprite = isDemonWin ? setting.demonWin : setting.angelWin;
             endingScreen.sprite = endingSprite;
             endingScreen.gameObject.SetActive(true);
             endingScreen.color = new Color(1 , 1 , 1 , 0);
