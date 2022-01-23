@@ -110,7 +110,7 @@ namespace Game.Scripts.Flows
                     lamp.SetOwner(playerDataId);
                 }
             else
-                for (var i = countPerPlayer - 1 ; i >= 0 ; i--)
+                for (var i = lampCount - 1 ; i >= 0 ; i--)
                 {
                     var lamp = allLampInstances[i];
                     lamp.SetOwner(playerDataId);
