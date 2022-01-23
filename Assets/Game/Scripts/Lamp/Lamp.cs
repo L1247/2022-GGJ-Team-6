@@ -6,12 +6,15 @@ using Zenject;
 
 namespace Game.Scripts.Lamp
 {
-    public class LampTrigger : MonoBehaviour
+    public class Lamp : MonoBehaviour
     {
     #region Private Variables
 
         [Inject]
         private IDomainEventBus domainEventBus;
+
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
 
         [SerializeField]
         private string lightDataId;
@@ -30,6 +33,15 @@ namespace Game.Scripts.Lamp
                 // publish event
                 domainEventBus.Post(new LightInteractionTriggered(playerDataId , lightDataId));
             }
+        }
+
+    #endregion
+
+    #region Public Methods
+
+        public void SetSprite(Sprite sprite)
+        {
+            spriteRenderer.sprite = sprite;
         }
 
     #endregion

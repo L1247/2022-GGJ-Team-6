@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightDataId: 123
+  spriteRenderer: {fileID: 7884534807782825682}
 --- !u!50 &7884534807782825693
 Rigidbody2D:
   serializedVersion: 4
