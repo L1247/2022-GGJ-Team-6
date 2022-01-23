@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d40b10d2e94a13987e6e8605bd79f0, type: 3}
   m_Name: ActorData_Angel
   m_EditorClassIdentifier: 
-  DataId: Angel
-  MainSprite: {fileID: 21300000, guid: 1d592e2c0d472fe43b04c266f9f042fa, type: 3}
+  speed: 5
   PlayerKeyBinding:
-    Up: 119
     Down: 115
     Left: 97
     Right: 100
+    Up: 119
+  MainSprite: {fileID: 21300000, guid: 1d592e2c0d472fe43b04c266f9f042fa, type: 3}
+  DataId: Angel

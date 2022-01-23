@@ -1,5 +1,4 @@
 using Game.Scripts.DataStructer;
-using UnityEngine;
 using Zenject;
 
 namespace Game.Scripts.Player
@@ -11,14 +10,17 @@ namespace Game.Scripts.Player
         [Inject]
         private ActorDataOverview actorDataOverview;
 
+        [Inject]
+        private PlayerRegistry playerRegistry;
+
     #endregion
 
     #region Public Methods
 
-        public void ShowPlayer(string playerDataId , GameObject playerInstance)
+        public void ShowPlayer(string playerDataId)
         {
             var actorData        = actorDataOverview.GetActorData(playerDataId);
-            var playerController = playerInstance.GetComponent<PlayerController>();
+            var playerController = playerRegistry.GetPlayerController(playerDataId);
             playerController.Init(actorData);
         }
 

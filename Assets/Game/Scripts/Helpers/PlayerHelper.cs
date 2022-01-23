@@ -1,3 +1,4 @@
+using Game.Scripts.Player;
 using UnityEngine;
 
 namespace Game.Scripts.Helpers
@@ -8,7 +9,9 @@ namespace Game.Scripts.Helpers
 
         public static string GetPlayerDataId(GameObject triggerGameObject)
         {
-            return "0";
+            var playerController = triggerGameObject.GetComponent<PlayerController>();
+            var dataId           = playerController.GetDataId();
+            return dataId;
         }
 
         /// <summary>

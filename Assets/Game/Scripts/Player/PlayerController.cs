@@ -1,5 +1,6 @@
 using System;
 using Game.Scripts.DataStructer;
+using Game.Scripts.Flows;
 using UnityEngine;
 
 namespace Game.Scripts.Player
@@ -22,6 +23,11 @@ namespace Game.Scripts.Player
         private KeyCode rightKeyCode;
         private KeyCode upKeyCode;
 
+        private string dataId;
+
+        [SerializeField]
+        private QTEPanel qtePanel;
+
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
@@ -29,9 +35,20 @@ namespace Game.Scripts.Player
 
     #region Public Methods
 
+        public string GetDataId()
+        {
+            return dataId;
+        }
+
+        public QTEPanel GetQtePanel()
+        {
+            return qtePanel;
+        }
+
         public void Init(ActorData actorData)
         {
             var keyBinding = actorData.PlayerKeyBinding;
+            dataId                = actorData.DataId;
             spriteRenderer.sprite = actorData.MainSprite;
             speed                 = actorData.speed;
             upKeyCode             = keyBinding.Up;
@@ -56,7 +73,7 @@ namespace Game.Scripts.Player
 
         private void Move()
         {
-            if (enableMovement) transform.Translate(MoveDirection() * speed);
+            if (enableMovement) transform.Translate(MoveDirection() * (speed * Time.deltaTime));
         }
 
         private Vector2 MoveDirection()

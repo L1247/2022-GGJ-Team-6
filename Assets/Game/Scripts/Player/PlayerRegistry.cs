@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Game.Scripts.Player
 {
@@ -10,15 +9,20 @@ namespace Game.Scripts.Player
         /// <summary>
         ///     player's data id , player instance
         /// </summary>
-        private readonly Dictionary<string , GameObject> playerInstances = new();
+        private readonly Dictionary<string , PlayerController> playerInstances = new();
 
     #endregion
 
     #region Public Methods
 
-        public void Register(string playerDataId , GameObject playerInstance)
+        public PlayerController GetPlayerController(string playerDataId)
         {
-            playerInstances.Add(playerDataId , playerInstance);
+            return playerInstances[playerDataId];
+        }
+
+        public void Register(string playerDataId , PlayerController playerController)
+        {
+            playerInstances.Add(playerDataId , playerController);
         }
 
     #endregion

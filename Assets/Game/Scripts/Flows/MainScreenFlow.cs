@@ -49,9 +49,10 @@ namespace Game.Scripts.Flows
 
         public void WhenPlayerSpawned(string playerDataId)
         {
-            var playerInstance = Object.Instantiate(setting.PlayerPrefab);
-            playerPresenter.ShowPlayer(playerDataId , playerInstance);
-            playerRegistry.Register(playerDataId , playerInstance);
+            var playerInstance   = Object.Instantiate(setting.PlayerPrefab);
+            var playerController = playerInstance.GetComponent<PlayerController>();
+            playerRegistry.Register(playerDataId , playerController);
+            playerPresenter.ShowPlayer(playerDataId);
         }
 
         public void WhenQTESpawned(string playerDataId , string qteDataId)
@@ -59,7 +60,7 @@ namespace Game.Scripts.Flows
             if (qteDataId.Equals("0"))
             {
                 var qteKeyCode = KeyCode.E;
-                qtePresenter.ShowQTE(playerDataId , qteKeyCode);
+                qtePresenter.ShowQte(playerDataId , qteKeyCode);
                 qteDetector.Register(playerDataId , qteKeyCode);
             }
         }
