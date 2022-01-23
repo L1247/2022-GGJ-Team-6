@@ -54,7 +54,6 @@ namespace Game.Scripts.Lamp
         {
             ownerPlayerDataId = playerDataId;
             var lightVisible = ownerPlayerDataId.Equals("Angel");
-            Debug.Log($"{playerDataId} {lightVisible} , {gameObject.name}");
             lightGameObject.SetActive(lightVisible);
         }
 

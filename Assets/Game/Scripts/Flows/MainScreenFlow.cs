@@ -85,7 +85,11 @@ namespace Game.Scripts.Flows
 
         public void WhenPlayerDead(string playerDataId)
         {
-            if (gameOver == false) gameOver = true;
+            if (gameOver == false)
+            {
+                gameOver = true;
+                mainScreenUIPanel.GameOver(playerDataId);
+            }
         }
 
         public void WhenPlayerHealthChanged(string dataId , float currentHealth)

@@ -1,6 +1,11 @@
+using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Game.Scripts.DataStructer;
+using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Game.Scripts.UI
@@ -12,12 +17,30 @@ namespace Game.Scripts.UI
         [Inject]
         private GeneralPlayerData generalPlayerData;
 
+        [Inject]
+        private Setting setting;
+
+        [SerializeField]
+        private Image endingScreen;
+
         [SerializeField]
         private List<PlayerUIPanel> playerUIPanels;
 
     #endregion
 
     #region Public Methods
+
+        public void GameOver(string playerDataId)
+        {
+            var isAngel      = playerDataId.Equals("Angel");
+            var endingSprite = isAngel ? setting.angelWin : setting.demonWin;
+            endingScreen.sprite = endingSprite;
+            endingScreen.gameObject.SetActive(true);
+            endingScreen.color = new Color(1 , 1 , 1 , 0);
+            endingScreen.DOFade(1 , 2);
+            Observable.Timer(TimeSpan.FromSeconds(3))
+                      .Subscribe(_ => SceneManager.LoadScene(0)).AddTo(gameObject);
+        }
 
         public void SetPlayerHealth(string playerDataId , float amount)
         {
@@ -33,6 +56,21 @@ namespace Game.Scripts.UI
         {
             var maxHealth = generalPlayerData.MaxHealth;
             foreach (var playerUIPanel in playerUIPanels) playerUIPanel.SetMaxAmount(maxHealth);
+        }
+
+    #endregion
+
+    #region Nested Types
+
+        [Serializable]
+        public class Setting
+        {
+        #region Public Variables
+
+            public Sprite angelWin;
+            public Sprite demonWin;
+
+        #endregion
         }
 
     #endregion

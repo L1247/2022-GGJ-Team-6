@@ -1,5 +1,6 @@
 using Game.Scripts.DataStructer;
 using Game.Scripts.Flows;
+using Game.Scripts.UI;
 using UnityEngine;
 using Zenject;
 
@@ -25,6 +26,9 @@ namespace Game.Scripts.Installers
         [SerializeField]
         private MainScreenFlow.Setting mainScreenFlow;
 
+        [SerializeField]
+        private MainScreenUIPanel.Setting mainScreenUIPanel;
+
     #endregion
 
     #region Public Methods
@@ -36,6 +40,7 @@ namespace Game.Scripts.Installers
             Container.BindInstance(lampCalculatorData);
             Container.BindInstance(healthCalculatorData);
             Container.BindInstance(generalPlayerData);
+            Container.BindInstance(mainScreenUIPanel);
         }
 
     #endregion
