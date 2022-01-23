@@ -19,6 +19,11 @@ namespace Game.Scripts.UI
 
     #region Public Methods
 
+        public void SetMaxAmount(float maxHealth)
+        {
+            healthBar.SetMaxAmount(maxHealth);
+        }
+
         public void SetPlayerHealth(float amount)
         {
             healthBar.SetAmount(amount);

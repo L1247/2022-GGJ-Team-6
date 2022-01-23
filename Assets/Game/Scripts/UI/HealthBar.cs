@@ -22,7 +22,7 @@ namespace Game.Scripts.UI
             healthBar.fillAmount = fillAmount;
         }
 
-        public void SetMaxAmount(int maxAmount)
+        public void SetMaxAmount(float maxAmount)
         {
             this.maxAmount = maxAmount;
         }
