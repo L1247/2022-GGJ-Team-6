@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c745400634b0ba3b368fc780acf57, type: 3}
   m_Name: LampCalculatorData
   m_EditorClassIdentifier: 
-  LampCount: 4
+  LampCount: 8

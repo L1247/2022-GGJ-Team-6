@@ -50,6 +50,15 @@ namespace Game.Scripts.Lamp
         public void SetOwner(string playerDataId)
         {
             ownerPlayerDataId = playerDataId;
+            if (ownerPlayerDataId.Equals("Angel"))
+            {
+                // open light
+            }
+            else
+            {
+                // close light
+                gameObject.SetActive(false);
+            }
         }
 
         public void SetSprite(Sprite sprite)
