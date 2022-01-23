@@ -1,12 +1,12 @@
 using DDDCore.Event;
 using Game.Scripts.Helpers;
-using Game.Scripts.Light.Events;
+using Game.Scripts.Lamp.Events;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.Light
+namespace Game.Scripts.Lamp
 {
-    public class LightTrigger : MonoBehaviour
+    public class LampTrigger : MonoBehaviour
     {
     #region Private Variables
 

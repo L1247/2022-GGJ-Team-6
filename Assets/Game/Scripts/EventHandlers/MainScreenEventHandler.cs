@@ -1,7 +1,7 @@
 using DDDCore.Event;
 using DDDCore.Implement;
 using Game.Scripts.Flows;
-using Game.Scripts.Light.Events;
+using Game.Scripts.Lamp.Events;
 using Game.Scripts.Player.Events;
 using Game.Scripts.QTE.Events;
 using Zenject;

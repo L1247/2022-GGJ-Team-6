@@ -8,6 +8,8 @@ namespace Game.Scripts.DataStructer
     {
     #region Public Variables
 
+        public float speed = 0.3f;
+
         public PlayerController.PlayerKeyBinding PlayerKeyBinding;
         public Sprite                            MainSprite;
         public string                            DataId;

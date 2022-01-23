@@ -1,6 +1,6 @@
 using DDDCore.Implement;
 
-namespace Game.Scripts.Light.Events
+namespace Game.Scripts.Lamp.Events
 {
     public class LightInteractionTriggered : DomainEvent
     {

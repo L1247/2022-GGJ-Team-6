@@ -8,7 +8,7 @@ namespace Game.Scripts.Player
     {
     #region Public Variables
 
-        public bool enableMovement = true;
+        public bool enableMovement;
 
     #endregion
 
@@ -40,19 +40,24 @@ namespace Game.Scripts.Player
             rightKeyCode          = keyBinding.Right;
         }
 
-        public void SetMovementDisable()
+        public void SetMovement(bool value)
         {
-            enableMovement = false;
-        }
-
-        public void SetMovementEnable()
-        {
-            enableMovement = true;
+            enableMovement = value;
         }
 
     #endregion
 
     #region Private Methods
+
+        private void Awake()
+        {
+            SetMovement(true);
+        }
+
+        private void Move()
+        {
+            if (enableMovement) transform.Translate(MoveDirection() * speed);
+        }
 
         private Vector2 MoveDirection()
         {
@@ -69,8 +74,7 @@ namespace Game.Scripts.Player
 
         private void Update()
         {
-            if (enableMovement)
-                transform.Translate(MoveDirection() * speed);
+            Move();
         }
 
     #endregion
