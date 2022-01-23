@@ -46,6 +46,7 @@ namespace Game.Scripts.Flows
         public void Register(string playerDataId , KeyCode qteKeyCode , string lampDataId)
         {
             var qte = new Qte(qteKeyCode , lampDataId);
+            if (keycodes.ContainsKey(playerDataId)) return;
             keycodes.Add(playerDataId , qte);
         }
 

@@ -102,7 +102,13 @@ namespace Game.Scripts.Player
 
         private void Move()
         {
-            if (enableMovement) transform.Translate(MoveDirection() * (speed * Time.deltaTime));
+            if (enableMovement)
+            {
+                var moveDirection = MoveDirection();
+                transform.Translate(moveDirection * (speed * Time.deltaTime));
+                if (moveDirection.x == 0) return;
+                spriteRenderer.flipX = moveDirection.x > 0;
+            }
         }
 
         private Vector2 MoveDirection()
