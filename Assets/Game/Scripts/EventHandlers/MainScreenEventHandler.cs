@@ -22,7 +22,7 @@ namespace Game.Scripts.EventHandlers
         public MainScreenEventHandler(IDomainEventBus domainEventBus) : base(domainEventBus)
         {
             Register<LightInteractionTriggered>(triggered =>
-                mainScreenFlow.WhenLightInteractionTriggered(triggered.PlayerDataId));
+                mainScreenFlow.WhenLightInteractionTriggered(triggered.PlayerDataId , triggered.LightDataId));
             Register<QTESpawned>(spawned => mainScreenFlow.WhenQTESpawned(spawned.PlayerDataId , spawned.QteDataId));
             Register<QTESucceed>(succeed => mainScreenFlow.WhenQTESucceed(succeed.PlayerDataId));
             Register<PlayerSpawned>(spawned => mainScreenFlow.WhenPlayerSpawned(spawned.PlayerDataId));

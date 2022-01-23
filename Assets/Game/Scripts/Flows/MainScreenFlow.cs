@@ -78,9 +78,12 @@ namespace Game.Scripts.Flows
             HurtAllPlayer();
         }
 
-        public void WhenLightInteractionTriggered(string playerDataId)
+        public void WhenLightInteractionTriggered(string playerDataId , string lightDataId)
         {
             var qteDataId = playerDataId.Equals("Angel") ? "0" : "1";
+            var lamp      = lampInstanceRegistry.GetLamp(lightDataId);
+            var isOwner   = lamp.Owner.Equals(playerDataId);
+            if (isOwner) return;
             qteSpawner.Spawn(playerDataId , qteDataId);
         }
 

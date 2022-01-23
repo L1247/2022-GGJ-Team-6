@@ -11,6 +11,7 @@ namespace Game.Scripts.Lamp
     #region Public Variables
 
         public string DataId => lightDataId;
+        public string Owner  { get; private set; }
 
     #endregion
 
@@ -18,8 +19,6 @@ namespace Game.Scripts.Lamp
 
         [Inject]
         private IDomainEventBus domainEventBus;
-
-        private string ownerPlayerDataId;
 
         [SerializeField]
         private GameObject lightGameObject;
@@ -52,8 +51,8 @@ namespace Game.Scripts.Lamp
 
         public void SetOwner(string playerDataId)
         {
-            ownerPlayerDataId = playerDataId;
-            var lightVisible = ownerPlayerDataId.Equals("Angel");
+            Owner = playerDataId;
+            var lightVisible = Owner.Equals("Angel");
             lightGameObject.SetActive(lightVisible);
         }
 
