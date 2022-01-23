@@ -25,6 +25,9 @@ namespace Game.Scripts.Flows
         private LampCalculator lampCalculator;
 
         [Inject]
+        private LampInstanceRegistry lampInstanceRegistry;
+
+        [Inject]
         private LampRegistry lampRegistry;
 
         [Inject]
@@ -89,6 +92,8 @@ namespace Game.Scripts.Flows
             var playerController = playerInstance.GetComponent<PlayerController>();
             playerRegistry.Register(playerDataId , playerController);
             playerPresenter.ShowPlayer(playerDataId);
+
+            var allInstances = lampInstanceRegistry.GetAllInstances();
             lampRegistry.AddLampCount(playerDataId);
             lampRegistry.AddLampCount(playerDataId);
         }

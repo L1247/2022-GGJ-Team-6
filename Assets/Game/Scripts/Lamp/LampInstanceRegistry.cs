@@ -11,5 +11,19 @@ namespace Game.Scripts.Lamp
         private List<Lamp> lamps = new();
 
     #endregion
+
+    #region Public Methods
+
+        public List<Lamp> GetAllInstances()
+        {
+            return lamps;
+        }
+
+        public Lamp GetLamp(string lampDataId)
+        {
+            return lamps.Find(lamp => lamp.DataId.Equals(lampDataId));
+        }
+
+    #endregion
     }
 }
