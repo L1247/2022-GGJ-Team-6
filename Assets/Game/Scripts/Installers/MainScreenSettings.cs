@@ -14,6 +14,12 @@ namespace Game.Scripts.Installers
         private ActorDataOverview actorDataOverview;
 
         [SerializeField]
+        private HealthCalculatorData healthCalculatorData;
+
+        [SerializeField]
+        private LampCalculatorData lampCalculatorData;
+
+        [SerializeField]
         private MainScreenFlow.Setting mainScreenFlow;
 
     #endregion
@@ -24,6 +30,8 @@ namespace Game.Scripts.Installers
         {
             Container.BindInstance(mainScreenFlow);
             Container.BindInstance(actorDataOverview);
+            Container.BindInstance(lampCalculatorData);
+            Container.BindInstance(healthCalculatorData);
         }
 
     #endregion

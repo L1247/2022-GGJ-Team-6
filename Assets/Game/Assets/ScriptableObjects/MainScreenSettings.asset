@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ccc81853f94133a9f2972b96bf3d01, type: 3}
   m_Name: MainScreenSettings
   m_EditorClassIdentifier: 
+  actorDataOverview: {fileID: 11400000, guid: 73ecb6d82dc1450478c92cc95335861c, type: 2}
   mainScreenFlow:
     PlayerPrefab: {fileID: 7786880156121238368, guid: d5701401ee9267e4080ea12cef82cb3f, type: 3}
-  actorDataOverview: {fileID: 11400000, guid: 73ecb6d82dc1450478c92cc95335861c, type: 2}
+  lampCalculatorData: {fileID: 11400000, guid: aca5741bb7802c14c9e247401ea18972, type: 2}
+  healthCalculatorData: {fileID: 11400000, guid: 5bab0ce38a95cab44af50fd3e2c347ec, type: 2}
