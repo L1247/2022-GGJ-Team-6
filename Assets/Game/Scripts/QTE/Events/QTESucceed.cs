@@ -6,15 +6,18 @@ namespace Game.Scripts.QTE.Events
     {
     #region Public Variables
 
+        public string LampDataId { get; }
+
         public string PlayerDataId { get; }
 
     #endregion
 
     #region Constructor
 
-        public QTESucceed(string playerDataId)
+        public QTESucceed(string playerDataId , string lampDataId)
         {
             PlayerDataId = playerDataId;
+            LampDataId   = lampDataId;
         }
 
     #endregion

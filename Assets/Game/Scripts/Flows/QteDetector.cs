@@ -7,14 +7,34 @@ using Zenject;
 
 namespace Game.Scripts.Flows
 {
+    public class Qte
+    {
+    #region Public Variables
+
+        public KeyCode QteKeyCode { get; }
+        public string  LampDataId { get; }
+
+    #endregion
+
+    #region Constructor
+
+        public Qte(KeyCode qteKeyCode , string lampDataId)
+        {
+            QteKeyCode = qteKeyCode;
+            LampDataId = lampDataId;
+        }
+
+    #endregion
+    }
+
     public class QteDetector : ITickable
     {
     #region Private Variables
 
         /// <summary>
-        ///     player's data id , keyCode
+        ///     player's data id , qte
         /// </summary>
-        private readonly Dictionary<string , KeyCode> keycodes = new();
+        private readonly Dictionary<string , Qte> keycodes = new();
 
         [Inject]
         private IDomainEventBus domainEventBus;
@@ -23,9 +43,10 @@ namespace Game.Scripts.Flows
 
     #region Public Methods
 
-        public void Register(string playerDataId , KeyCode qteKeyCode)
+        public void Register(string playerDataId , KeyCode qteKeyCode , string lampDataId)
         {
-            keycodes.Add(playerDataId , qteKeyCode);
+            var qte = new Qte(qteKeyCode , lampDataId);
+            keycodes.Add(playerDataId , qte);
         }
 
         public void Tick()
@@ -33,11 +54,11 @@ namespace Game.Scripts.Flows
             for (var index = keycodes.Keys.ToList().Count - 1 ; index >= 0 ; index--)
             {
                 var playerDataId = keycodes.Keys.ToList()[index];
-                var keyCode      = keycodes[playerDataId];
-                var keyDown      = Input.GetKeyDown(keyCode);
+                var qte          = keycodes[playerDataId];
+                var keyDown      = Input.GetKeyDown(qte.QteKeyCode);
                 if (keyDown)
                 {
-                    domainEventBus.Post(new QTESucceed(playerDataId));
+                    domainEventBus.Post(new QTESucceed(playerDataId , qte.LampDataId));
                     UnRegister(playerDataId);
                 }
             }

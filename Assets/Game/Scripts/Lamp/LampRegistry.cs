@@ -34,6 +34,16 @@ namespace Game.Scripts.Lamp
             return lampCounts[dataId];
         }
 
+        public void SubLampCount(string playerDataId)
+        {
+            var containsKey = lampCounts.ContainsKey(playerDataId);
+            if (containsKey)
+            {
+                var lampCount = lampCounts[playerDataId];
+                lampCounts[playerDataId] = lampCount - 1;
+            }
+        }
+
     #endregion
     }
 }

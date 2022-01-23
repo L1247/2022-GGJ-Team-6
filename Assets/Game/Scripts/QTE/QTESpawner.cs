@@ -15,9 +15,9 @@ namespace Game.Scripts.QTE
 
     #region Public Methods
 
-        public void Spawn(string playerDataId , string qteDataId)
+        public void Spawn(string playerDataId , string qteDataId , string lampDataId)
         {
-            domainEventBus.Post(new QTESpawned(playerDataId , qteDataId));
+            domainEventBus.Post(new QTESpawned(playerDataId , qteDataId , lampDataId));
         }
 
     #endregion

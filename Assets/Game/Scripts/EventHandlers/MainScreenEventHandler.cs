@@ -23,8 +23,9 @@ namespace Game.Scripts.EventHandlers
         {
             Register<LightInteractionTriggered>(triggered =>
                 mainScreenFlow.WhenLightInteractionTriggered(triggered.PlayerDataId , triggered.LightDataId));
-            Register<QTESpawned>(spawned => mainScreenFlow.WhenQTESpawned(spawned.PlayerDataId , spawned.QteDataId));
-            Register<QTESucceed>(succeed => mainScreenFlow.WhenQTESucceed(succeed.PlayerDataId));
+            Register<QTESpawned>(spawned =>
+                mainScreenFlow.WhenQTESpawned(spawned.PlayerDataId , spawned.QteDataId , spawned.LampDataId));
+            Register<QTESucceed>(succeed => mainScreenFlow.WhenQTESucceed(succeed.PlayerDataId , succeed.LampDataId));
             Register<PlayerSpawned>(spawned => mainScreenFlow.WhenPlayerSpawned(spawned.PlayerDataId));
             Register<PlayerHealthChanged>(changed => mainScreenFlow.WhenPlayerHealthChanged(changed.DataId , changed.CurrentHealth));
             Register<PlayerDead>(dead => mainScreenFlow.WhenPlayerDead(dead.DataId));

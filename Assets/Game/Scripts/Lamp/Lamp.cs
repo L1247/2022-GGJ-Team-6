@@ -11,7 +11,7 @@ namespace Game.Scripts.Lamp
     #region Public Variables
 
         public string DataId => lightDataId;
-        public string Owner  { get; private set; }
+        public string Owner;
 
     #endregion
 
