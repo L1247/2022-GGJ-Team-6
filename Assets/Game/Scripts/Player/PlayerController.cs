@@ -8,12 +8,13 @@ namespace Game.Scripts.Player
     {
     #region Public Variables
 
-        public bool  enableMovement = true;
-        public float speed          = 0.3f;
+        public bool enableMovement = true;
 
     #endregion
 
     #region Private Variables
+
+        private float speed;
 
         private KeyCode downKeyCode;
 
@@ -30,12 +31,13 @@ namespace Game.Scripts.Player
 
         public void Init(ActorData actorData)
         {
-            spriteRenderer.sprite = actorData.MainSprite;
             var keyBinding = actorData.PlayerKeyBinding;
-            upKeyCode    = keyBinding.Up;
-            downKeyCode  = keyBinding.Down;
-            leftKeyCode  = keyBinding.Left;
-            rightKeyCode = keyBinding.Right;
+            spriteRenderer.sprite = actorData.MainSprite;
+            speed                 = actorData.speed;
+            upKeyCode             = keyBinding.Up;
+            downKeyCode           = keyBinding.Down;
+            leftKeyCode           = keyBinding.Left;
+            rightKeyCode          = keyBinding.Right;
         }
 
         public void SetMovementDisable()
