@@ -1,15 +1,30 @@
 using System;
+using Game.Scripts.Calculator;
+using Game.Scripts.Lamp;
 using Game.Scripts.Player;
 using Game.Scripts.QTE;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace Game.Scripts.Flows
 {
-    public class MainScreenFlow : IInitializable
+    public class MainScreenFlow : IInitializable , ITickable
     {
     #region Private Variables
+
+        private bool gameOver;
+
+        [Inject]
+        private DiContainer container;
+
+        [Inject]
+        private HealthCalculator healthCalculator;
+
+        [Inject]
+        private LampCalculator lampCalculator;
+
+        [Inject]
+        private LampRegistry lampRegistry;
 
         [Inject]
         private PlayerPresenter playerPresenter;
@@ -42,17 +57,30 @@ namespace Game.Scripts.Flows
             playerSpawner.Spawn("Angel");
         }
 
+        public void Tick()
+        {
+            if (gameOver) return;
+
+            HurtAllPlayer();
+        }
+
         public void WhenLightInteractionTriggered(string playerDataId , string lightDataId)
         {
             qteSpawner.Spawn(playerDataId , lightDataId);
         }
 
+        public void WhenPlayerDead(string playerDataId)
+        {
+            if (gameOver == false) gameOver = true;
+        }
+
         public void WhenPlayerSpawned(string playerDataId)
         {
-            var playerInstance   = Object.Instantiate(setting.PlayerPrefab);
+            var playerInstance   = container.InstantiatePrefab(setting.PlayerPrefab);
             var playerController = playerInstance.GetComponent<PlayerController>();
             playerRegistry.Register(playerDataId , playerController);
             playerPresenter.ShowPlayer(playerDataId);
+            lampRegistry.AddLampCount(playerDataId , 2);
         }
 
         /// <summary>
@@ -70,9 +98,26 @@ namespace Game.Scripts.Flows
             }
         }
 
-        public void WhenQTESucceed()
+        public void WhenQTESucceed(string succeedPlayerDataId)
         {
-            qtePresenter.HideQTE();
+            qtePresenter.HideQte(succeedPlayerDataId);
+        }
+
+    #endregion
+
+    #region Private Methods
+
+        private void HurtAllPlayer()
+        {
+            foreach (var playerController in playerRegistry.GetAllPlayerController())
+            {
+                if (playerController.IsDead) continue;
+                var dataId              = playerController.GetDataId();
+                var lampCount           = lampRegistry.GetLampCount(dataId);
+                var lampMultiplyByCount = lampCalculator.GetLampMultiplyByCount(lampCount);
+                var damage              = healthCalculator.GetDamage(lampMultiplyByCount);
+                playerController.TakeDamage(damage);
+            }
         }
 
     #endregion

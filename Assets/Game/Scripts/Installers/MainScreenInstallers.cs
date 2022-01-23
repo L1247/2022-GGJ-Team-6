@@ -2,6 +2,7 @@ using DDDCore.Implement;
 using Game.Scripts.Calculator;
 using Game.Scripts.EventHandlers;
 using Game.Scripts.Flows;
+using Game.Scripts.Lamp;
 using Game.Scripts.Player;
 using Game.Scripts.QTE;
 using Zenject;
@@ -22,10 +23,13 @@ namespace Game.Scripts.Installers
             Container.Bind<QTE_Presenter>().AsSingle();
             Container.Bind<PlayerSpawner>().AsSingle();
             Container.Bind<PlayerPresenter>().AsSingle();
-            Container.Bind<PlayerRegistry>().AsSingle();
-            // calculator
+            // Calculator
             Container.Bind<HealthCalculator>().AsSingle();
             Container.Bind<LampCalculator>().AsSingle();
+
+            // Registry
+            Container.Bind<PlayerRegistry>().AsSingle();
+            Container.Bind<LampRegistry>().AsSingle();
         }
 
     #endregion

@@ -15,9 +15,12 @@ namespace Game.Scripts.Flows
 
     #region Public Methods
 
-        public void HideQTE()
+        public void HideQte(string playerDataId)
         {
-            // refenerce.QTEPanel.Hide();
+            var playerController = playerRegistry.GetPlayerController(playerDataId);
+            playerController.SetMovement(true);
+            var qtePanel = playerController.GetQtePanel();
+            qtePanel.Hide();
         }
 
         public void ShowQte(string playerDataId , KeyCode keyCode)

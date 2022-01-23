@@ -8,6 +8,8 @@ namespace Game.Scripts.DataStructer
     {
     #region Public Variables
 
+        public float Health = 100;
+
         public float speed = 0.3f;
 
         public PlayerController.PlayerKeyBinding PlayerKeyBinding;

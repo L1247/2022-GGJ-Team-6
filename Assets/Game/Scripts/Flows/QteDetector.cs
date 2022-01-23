@@ -37,7 +37,7 @@ namespace Game.Scripts.Flows
                 var keyDown      = Input.GetKeyDown(keyCode);
                 if (keyDown)
                 {
-                    domainEventBus.Post(new QTESucceed());
+                    domainEventBus.Post(new QTESucceed(playerDataId));
                     UnRegister(playerDataId);
                 }
             }

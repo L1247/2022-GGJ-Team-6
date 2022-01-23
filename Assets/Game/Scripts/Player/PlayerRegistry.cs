@@ -9,20 +9,25 @@ namespace Game.Scripts.Player
         /// <summary>
         ///     player's data id , player instance
         /// </summary>
-        private readonly Dictionary<string , PlayerController> playerInstances = new();
+        private readonly Dictionary<string , PlayerController> playerControllers = new();
 
     #endregion
 
     #region Public Methods
 
+        public IEnumerable<PlayerController> GetAllPlayerController()
+        {
+            return playerControllers.Values;
+        }
+
         public PlayerController GetPlayerController(string playerDataId)
         {
-            return playerInstances[playerDataId];
+            return playerControllers[playerDataId];
         }
 
         public void Register(string playerDataId , PlayerController playerController)
         {
-            playerInstances.Add(playerDataId , playerController);
+            playerControllers.Add(playerDataId , playerController);
         }
 
     #endregion

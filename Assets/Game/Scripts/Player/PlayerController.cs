@@ -1,13 +1,18 @@
 using System;
+using DDDCore.Event;
 using Game.Scripts.DataStructer;
 using Game.Scripts.Flows;
+using Game.Scripts.Player.Events;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
     #region Public Variables
+
+        public bool IsDead { get; private set; }
 
         public bool enableMovement;
 
@@ -17,6 +22,9 @@ namespace Game.Scripts.Player
 
         private float speed;
 
+        [Inject]
+        private IDomainEventBus domainEventBus;
+
         private KeyCode downKeyCode;
 
         private KeyCode leftKeyCode;
@@ -24,6 +32,9 @@ namespace Game.Scripts.Player
         private KeyCode upKeyCode;
 
         private string dataId;
+
+        [SerializeField]
+        private float currentHealth;
 
         [SerializeField]
         private QTEPanel qtePanel;
@@ -55,6 +66,7 @@ namespace Game.Scripts.Player
             downKeyCode           = keyBinding.Down;
             leftKeyCode           = keyBinding.Left;
             rightKeyCode          = keyBinding.Right;
+            currentHealth         = actorData.Health;
             gameObject.name       = $"Player_{actorData.DataId}";
         }
 
@@ -63,12 +75,28 @@ namespace Game.Scripts.Player
             enableMovement = value;
         }
 
+        public void TakeDamage(float damage)
+        {
+            currentHealth -= damage;
+            domainEventBus.Post(new PlayerHealthChanged(dataId , currentHealth));
+            // check is player dead
+            if (currentHealth <= 0)
+            {
+                // player is dead
+                domainEventBus.Post(new PlayerDead(dataId));
+                IsDead = true;
+                SetMovement(false);
+                qtePanel.Hide();
+            }
+        }
+
     #endregion
 
     #region Private Methods
 
         private void Awake()
         {
+            IsDead = false;
             SetMovement(true);
         }
 
