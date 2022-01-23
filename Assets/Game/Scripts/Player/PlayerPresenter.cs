@@ -1,4 +1,5 @@
 using Game.Scripts.DataStructer;
+using Utilities.Contract;
 using Zenject;
 
 namespace Game.Scripts.Player
@@ -8,7 +9,10 @@ namespace Game.Scripts.Player
     #region Private Variables
 
         [Inject]
-        private ActorDataOverview actorDataOverview;
+        private GeneralPlayerData generalPlayerData;
+
+        [Inject]
+        private PlayerDataOverview playerDataOverview;
 
         [Inject]
         private PlayerRegistry playerRegistry;
@@ -19,9 +23,10 @@ namespace Game.Scripts.Player
 
         public void ShowPlayer(string playerDataId)
         {
-            var actorData        = actorDataOverview.GetActorData(playerDataId);
+            var playerData = playerDataOverview.GetPlayerData(playerDataId);
+            Contract.RequireNotNull(playerDataId , $"playerDataId: {playerDataId} , playerData");
             var playerController = playerRegistry.GetPlayerController(playerDataId);
-            playerController.Init(actorData);
+            playerController.Init(playerData , generalPlayerData);
         }
 
     #endregion

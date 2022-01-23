@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69d40b10d2e94a13987e6e8605bd79f0, type: 3}
-  m_Name: ActorData_Demon
+  m_Script: {fileID: 11500000, guid: d38663c274c74373b83021815d283954, type: 3}
+  m_Name: PlayerDataOverview
   m_EditorClassIdentifier: 
-  speed: 5
-  PlayerKeyBinding:
-    Down: 274
-    Left: 276
-    Right: 275
-    Up: 273
-  MainSprite: {fileID: 21300000, guid: 3037c0f2e4063c54388d8ffd2f7df0d6, type: 3}
-  DataId: Demon
+  playerDatas:
+  - {fileID: 11400000, guid: 5759e17ce1a8afc4c8c17699df769a89, type: 2}
+  - {fileID: 11400000, guid: c1c247d19d779244cb92f03f87a2ab81, type: 2}

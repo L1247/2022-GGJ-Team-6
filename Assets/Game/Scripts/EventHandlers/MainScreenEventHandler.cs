@@ -26,6 +26,7 @@ namespace Game.Scripts.EventHandlers
             Register<QTESpawned>(spawned => mainScreenFlow.WhenQTESpawned(spawned.PlayerDataId , spawned.QteDataId));
             Register<QTESucceed>(succeed => mainScreenFlow.WhenQTESucceed(succeed.PlayerDataId));
             Register<PlayerSpawned>(spawned => mainScreenFlow.WhenPlayerSpawned(spawned.PlayerDataId));
+            Register<PlayerHealthChanged>(changed => mainScreenFlow.WhenPlayerHealthChanged(changed.DataId , changed.CurrentHealth));
             Register<PlayerDead>(dead => mainScreenFlow.WhenPlayerDead(dead.DataId));
         }
 

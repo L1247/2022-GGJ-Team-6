@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38663c274c74373b83021815d283954, type: 3}
-  m_Name: ActorDataOverview
+  m_Script: {fileID: 11500000, guid: b63415d2275d47f9b4a22ef1129dafca, type: 3}
+  m_Name: GeneralPlayerData
   m_EditorClassIdentifier: 
-  actorDatas:
-  - {fileID: 11400000, guid: c1c247d19d779244cb92f03f87a2ab81, type: 2}
-  - {fileID: 11400000, guid: 5759e17ce1a8afc4c8c17699df769a89, type: 2}
+  MaxHealth: 100
+  speed: 5

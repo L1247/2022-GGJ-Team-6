@@ -4,20 +4,20 @@ using UnityEngine;
 namespace Game.Scripts.DataStructer
 {
     [CreateAssetMenu(fileName = "ActorDataOverview" , menuName = "ActorDataOverview" , order = 0)]
-    public class ActorDataOverview : ScriptableObject
+    public class PlayerDataOverview : ScriptableObject
     {
     #region Private Variables
 
         [SerializeField]
-        private List<ActorData> actorDatas = new();
+        private List<PlayerData> playerDatas = new();
 
     #endregion
 
     #region Public Methods
 
-        public ActorData GetActorData(string dataId)
+        public PlayerData GetPlayerData(string dataId)
         {
-            return actorDatas.Find(data => data.DataId.Equals(dataId));
+            return playerDatas.Find(data => data.DataId.Equals(dataId));
         }
 
     #endregion

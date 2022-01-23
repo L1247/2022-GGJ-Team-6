@@ -11,13 +11,16 @@ namespace Game.Scripts.Installers
     #region Private Variables
 
         [SerializeField]
-        private ActorDataOverview actorDataOverview;
+        private GeneralPlayerData generalPlayerData;
 
         [SerializeField]
         private HealthCalculatorData healthCalculatorData;
 
         [SerializeField]
         private LampCalculatorData lampCalculatorData;
+
+        [SerializeField]
+        private PlayerDataOverview playerDataOverview;
 
         [SerializeField]
         private MainScreenFlow.Setting mainScreenFlow;
@@ -29,9 +32,10 @@ namespace Game.Scripts.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(mainScreenFlow);
-            Container.BindInstance(actorDataOverview);
+            Container.BindInstance(playerDataOverview);
             Container.BindInstance(lampCalculatorData);
             Container.BindInstance(healthCalculatorData);
+            Container.BindInstance(generalPlayerData);
         }
 
     #endregion

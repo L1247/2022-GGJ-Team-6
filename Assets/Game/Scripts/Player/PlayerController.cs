@@ -56,18 +56,18 @@ namespace Game.Scripts.Player
             return qtePanel;
         }
 
-        public void Init(ActorData actorData)
+        public void Init(PlayerData playerData , GeneralPlayerData generalPlayerData)
         {
-            var keyBinding = actorData.PlayerKeyBinding;
-            dataId                = actorData.DataId;
-            spriteRenderer.sprite = actorData.MainSprite;
-            speed                 = actorData.speed;
+            var keyBinding = playerData.PlayerKeyBinding;
+            dataId                = playerData.DataId;
+            spriteRenderer.sprite = playerData.MainSprite;
+            speed                 = generalPlayerData.speed;
+            currentHealth         = generalPlayerData.MaxHealth;
             upKeyCode             = keyBinding.Up;
             downKeyCode           = keyBinding.Down;
             leftKeyCode           = keyBinding.Left;
             rightKeyCode          = keyBinding.Right;
-            currentHealth         = actorData.Health;
-            gameObject.name       = $"Player_{actorData.DataId}";
+            gameObject.name       = $"Player_{playerData.DataId}";
         }
 
         public void SetMovement(bool value)

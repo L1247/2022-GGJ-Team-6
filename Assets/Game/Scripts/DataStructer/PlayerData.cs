@@ -4,13 +4,9 @@ using UnityEngine;
 namespace Game.Scripts.DataStructer
 {
     [CreateAssetMenu(fileName = "ActorData" , menuName = "ActorData" , order = 0)]
-    public class ActorData : ScriptableObject
+    public class PlayerData : ScriptableObject
     {
     #region Public Variables
-
-        public float Health = 100;
-
-        public float speed = 0.3f;
 
         public PlayerController.PlayerKeyBinding PlayerKeyBinding;
         public Sprite                            MainSprite;

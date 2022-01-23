@@ -3,6 +3,7 @@ using Game.Scripts.Calculator;
 using Game.Scripts.Lamp;
 using Game.Scripts.Player;
 using Game.Scripts.QTE;
+using Game.Scripts.UI;
 using UnityEngine;
 using Zenject;
 
@@ -25,6 +26,9 @@ namespace Game.Scripts.Flows
 
         [Inject]
         private LampRegistry lampRegistry;
+
+        [Inject]
+        private MainScreenUIPanel mainScreenUIPanel;
 
         [Inject]
         private PlayerPresenter playerPresenter;
@@ -72,6 +76,11 @@ namespace Game.Scripts.Flows
         public void WhenPlayerDead(string playerDataId)
         {
             if (gameOver == false) gameOver = true;
+        }
+
+        public void WhenPlayerHealthChanged(string dataId , float currentHealth)
+        {
+            mainScreenUIPanel.SetPlayerHealth(dataId , currentHealth);
         }
 
         public void WhenPlayerSpawned(string playerDataId)
