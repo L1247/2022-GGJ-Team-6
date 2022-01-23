@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f75ca7a3bd47c69c909f96f8b92a33, type: 3}
   m_Name: HealthCalculatorData
   m_EditorClassIdentifier: 
-  DamagePerFrame: 0.01
+  DamagePerFrame: 0.005

@@ -56,11 +56,6 @@ namespace Game.Scripts.Lamp
             lightGameObject.SetActive(lightVisible);
         }
 
-        public void SetSprite(Sprite sprite)
-        {
-            spriteRenderer.sprite = sprite;
-        }
-
     #endregion
     }
 }

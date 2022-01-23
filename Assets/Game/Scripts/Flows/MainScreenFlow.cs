@@ -83,6 +83,7 @@ namespace Game.Scripts.Flows
             var qteDataId = playerDataId.Equals("Angel") ? "0" : "1";
             var lamp      = lampInstanceRegistry.GetLamp(lampDataId);
             var isOwner   = lamp.Owner.Equals(playerDataId);
+            Debug.Log($"{isOwner} , {playerDataId} , {lamp.Owner} {lamp}");
             if (isOwner) return;
             qteSpawner.Spawn(playerDataId , qteDataId , lampDataId);
         }
@@ -166,7 +167,6 @@ namespace Game.Scripts.Flows
                 var lampCount           = lampRegistry.GetLampCount(dataId);
                 var lampMultiplyByCount = lampCalculator.GetLampMultiplyByCount(lampCount);
                 var damage              = healthCalculator.GetDamage(lampMultiplyByCount);
-                Debug.Log($"{dataId} , {lampCount}");
                 playerController.TakeDamage(damage);
             }
         }
