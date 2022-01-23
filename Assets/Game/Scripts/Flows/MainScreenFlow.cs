@@ -69,6 +69,7 @@ namespace Game.Scripts.Flows
             allLampInstances.Shuffle();
             playerSpawner.Spawn("Demon");
             playerSpawner.Spawn("Angel");
+            Application.targetFrameRate = 60;
         }
 
         public void Tick()
