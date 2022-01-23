@@ -17,7 +17,16 @@ namespace Game.Scripts.Lamp
 
         public void AddLampCount(string playerDataId)
         {
-            lampCounts.Add(playerDataId , 1);
+            var containsKey = lampCounts.ContainsKey(playerDataId);
+            if (containsKey)
+            {
+                var lampCount = lampCounts[playerDataId];
+                lampCounts[playerDataId] = lampCount + 1;
+            }
+            else
+            {
+                lampCounts.Add(playerDataId , 1);
+            }
         }
 
         public int GetLampCount(string dataId)
