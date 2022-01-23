@@ -120,6 +120,11 @@ namespace Game.Scripts.Player
             directionX += Input.GetKey(leftKeyCode) ? -1 : 0;
             directionY += Input.GetKey(upKeyCode) ? 1 : 0;
             directionY += Input.GetKey(downKeyCode) ? -1 : 0;
+            if (Mathf.Abs(directionX) > 0 && Mathf.Abs(directionY) > 0) 
+            {
+                directionX *= 0.707f;
+                directionY *= 0.707f;
+            }
 
             return new Vector2(directionX , directionY);
         }
